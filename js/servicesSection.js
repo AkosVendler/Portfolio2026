@@ -58,42 +58,58 @@ blockDefs.forEach((def) => {
   def._el = el;
 });
  
-// Step 2: measure after browser has laid them out
-requestAnimationFrame(() => {
-  requestAnimationFrame(() => {
-    blockDefs.forEach((def, i) => {
-      const rect = def._el.getBoundingClientRect();
-      const w = Math.round(rect.width);
-      const h = Math.round(rect.height);
- 
-      // Move el to real section
-      section.appendChild(def._el);
-      def._el.style.left = `${def.x - w/2}px`;
-      def._el.style.top  = `${def.y - h/2}px`;
- 
-      // Create physics body with MEASURED dimensions
-      const body = Bodies.rectangle(def.x, def.y, w, h, {
-        restitution: 0.05,
-        friction: 0.8,
-        frictionAir: 0.055,
-        frictionStatic: 1.2,
-        density: 0.035,
-        slop: 0.01,
-        angle: def.rot,
-        label: `block_${i}`
-      });
-      Body.setAngularVelocity(body, (Math.random()-0.5)*0.15);
-      World.add(world, body);
- 
-      blocks.push({ body, el: def._el, w, h, isDrotviaz: def.vertical });
+// Step 2: measure after browser has fully stabilized layout
+async function initPhysics() {
+  // 1. FONT WAIT (CRITICAL)
+  if (document.fonts?.ready) {
+    await document.fonts.ready;
+  }
+
+  // 2. layout stabilizálás (VERY IMPORTANT for Vercel + Chromium)
+  await new Promise(r => requestAnimationFrame(r));
+  await new Promise(r => requestAnimationFrame(r));
+
+  // update size AFTER layout is stable
+  W = section.offsetWidth;
+  H = section.offsetHeight;
+
+  blockDefs.forEach((def, i) => {
+    const rect = def._el.getBoundingClientRect();
+    const w = Math.round(rect.width);
+    const h = Math.round(rect.height);
+
+    section.appendChild(def._el);
+
+    def._el.style.left = `${def.x - w/2}px`;
+    def._el.style.top  = `${def.y - h/2}px`;
+
+    const body = Bodies.rectangle(def.x, def.y, w, h, {
+      restitution: 0.05,
+      friction: 0.8,
+      frictionAir: 0.055,
+      frictionStatic: 1.2,
+      density: 0.035,
+      slop: 0.01,
+      angle: def.rot,
+      label: `block_${i}`
     });
- 
-    document.body.removeChild(measureContainer);
- 
-    // Start everything after blocks are ready
-    startPhysics();
+
+    Body.setAngularVelocity(body, (Math.random()-0.5)*0.15);
+    World.add(world, body);
+
+    blocks.push({
+      body,
+      el: def._el,
+      w,
+      h,
+      isDrotviaz: def.vertical
+    });
   });
-});
+
+  document.body.removeChild(measureContainer);
+
+  startPhysics();
+}
  
 // ── Easter egg state ──────────────────────────────────────────────────────
 let zeroGravity = false;
@@ -323,3 +339,5 @@ window.addEventListener('resize', () => {
 function startPhysics() {
   sync();
 }
+
+initPhysics();
