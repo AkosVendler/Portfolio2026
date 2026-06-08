@@ -1,0 +1,36 @@
+:root {
+  --bg: #F8F1FF;
+  --text: #0F0A0A;
+}
+
+.dark {
+  --bg: #0F0A0A;
+  --text: #F8F1FF;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+@font-face {
+  font-family: "Thunder ExtraBoldLC";
+  src: url("../fonts/Thunder-ExtraBoldLC.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Thunder BoldLC";
+  src: url("../fonts/Thunder-BoldLC.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "General Sans Medium";
+  src: url("../fonts/GeneralSans-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+

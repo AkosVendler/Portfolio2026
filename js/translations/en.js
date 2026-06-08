@@ -1,0 +1,23 @@
+export default {
+    "light-mode": "Light mode",
+    "dark-mode": "Dark mode",
+    "menu": "Menu",
+    "contact": "Contact",
+    "title": "Vendler Ákos",
+    "nav-home": "Home",
+    "nav-about": "About",
+    "nav-work": "Work",
+    "nav-contact": "Contact",
+    "nav-close": "Close",
+    "hero-title-1": "Creative",
+    "hero-title-2": "Designer",
+    "country": "Hungary",
+    "featured-works": "Featured Works",
+    "services-title": "Services",
+    "services-hint":"Drag them around, you're the designer here!",
+    "uxui": "UX/UI Design",
+    "branding": "Brand Identity",
+    "webdev": "Web Development",
+    "logo": "Logo Design",
+    "wireframe": "Wireframing"
+};

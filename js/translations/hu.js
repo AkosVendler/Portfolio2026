@@ -1,0 +1,23 @@
+export default {
+    "light-mode": "Világos mód",
+    "dark-mode": "Sötét mód",
+    "menu": "Menü",
+    "contact": "Elérhetőség",
+    "title": "Vendler Ákos",
+    "nav-home": "Home",
+    "nav-about": "Rólam",
+    "nav-work": "Munkáim",
+    "nav-contact": "Kapcsolat",
+    "nav-close": "Bezárás",
+    "hero-title-1": "Kreatív",
+    "hero-title-2": "Designer",
+    "country": "Magyarország",
+    "featured-works": "Kiemelt munkák",
+    "services-title": "Szolgáltatásaim",
+    "services-hint":"Mozgasd őket, itt te vagy a designer!",
+    "uxui": "UX/UI Tervezés",
+    "branding": "Arculat",
+    "webdev": "Web Fejlesztés",
+    "logo": "Logó Tervezés",
+    "wireframe": "Drótváz Tervezés"
+};

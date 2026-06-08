@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendler Ákos</title>
+    <link rel="stylesheet" href="./landing.css">
+    <link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./nav.css">
+    <link rel="stylesheet" href="./services.css">
+</head>
+
+<body>
+
+    <nav>
+        <button id="theme-toggle" data-i18n="dark-mode"></button>
+        <button id="menu-open" data-i18n="menu"></button>
+        <a href="#contact" data-i18n="contact"></a>
+    </nav>
+
+    <!-- Fullscreen nav -->
+    <div id="main-nav">
+        <div class="nav-lang">
+            <button class="lang-btn" data-lang="hu">HU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#" data-i18n="nav-home" class="nav-link">Home</a></li>
+            <li><a href="#" data-i18n="nav-about" class="nav-link">About</a></li>
+            <li><a href="#" data-i18n="nav-work" class="nav-link">Work</a></li>
+            <li><a href="#" data-i18n="nav-contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <button class="nav-close" data-i18n="nav-close">Bezárás</button>
+    </div>
+
+    <div class="hero">
+        <h1 data-i18n="title" class="title"></h1>
+        <div class="hero-content">
+            <div class="video-wrapper">
+                <video autoplay muted loop playsinline webkit-playsinline>
+                    <source src="./media/video.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="hero-title">
+                <h2 data-i18n="hero-title-1"></h2>
+                <h2 data-i18n="hero-title-2"></h2>
+            </div>
+        </div>
+        <div class="timezones">
+            <div class="timezone">
+                <p>Budapest</p>
+                <p id="budapest-time"></p>
+            </div>
+            <div class="location">
+                <p>Miskolc, </p>
+                <p data-i18n="country"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="featured-works">
+        <div class="featured-title">
+            <h1 data-i18n="featured-works"></h1>
+        </div>
+        <div class="works-grid">
+            <div class="work-item">
+                <img src="./media/work1.png" alt="Work 1">
+                <h3>Project One</h3>
+            </div>
+            <div class="work-item">
+                <img src="./media/work2.png" alt="Work 2">
+                <h3>Project Two</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="services">
+        <h1 class="page-title" data-i18n="services-title"></h1>
+        <div id="physics-section">
+            <div class="hint-text" data-i18n="services-hint"></div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function updateTime() {
+        const budapestTime = new Date().toLocaleTimeString("hu-HU", {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            timeZone: "Europe/Budapest"
+        });
+        document.getElementById("budapest-time").textContent = budapestTime;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+</script>
+
+<script type="module" src="./js/main.js"></script>
+<script type="module" src="./js/themeselector.js"></script>
+<script type="module" src="./js/videoScroll.js"></script>
+<script type="module" src="./js/lenis.js"></script>
+<script type="module" src="./js/servicesSection.js"></script>    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+</html>
