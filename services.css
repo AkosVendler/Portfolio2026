@@ -35,7 +35,7 @@
     font-size: 4cqi;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--bg);
     cursor: grab;
     user-select: none;
     will-change: transform;
@@ -46,8 +46,8 @@
   }
 
   .block:active { cursor: grabbing; }
-  .block-uxui     { background: #FF8200; padding: 30px 60px; line-height: 0.5; }
-  .block-arculat  { background: #5448C8; padding: 30px 40px; line-height: 0.5; }
-  .block-web      { background: #256EFF; padding: 30px 40px; line-height: 0.5; }
-  .block-logo     { background: #FF2E00; padding: 30px 40px; line-height: 0.5; }
-  .block-drotviaz { background: #FF495C; padding: 30px 40px; line-height: 0.5; writing-mode: vertical-rl; font-size: 4cqi;  }
+  .block-uxui     { background: var(--orange); padding: 30px 60px; line-height: 0.5; }
+  .block-arculat  { background: var(--orange); padding: 30px 40px; line-height: 0.5; }
+  .block-web      { background: var(--orange); padding: 30px 40px; line-height: 0.5; }
+  .block-logo     { background: var(--orange); padding: 30px 40px; line-height: 0.5; }
+  .block-drotviaz { background: var(--orange); padding: 30px 40px; line-height: 0.5; writing-mode: vertical-rl; font-size: 4cqi;  }

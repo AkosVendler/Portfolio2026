@@ -2,6 +2,13 @@ import hu from "./translations/hu.js";
 import en from "./translations/en.js";
 import { blockDefs } from "./servicesSection.js";
 
+import { runIntro } from './introAnimation.js';
+
+window.addEventListener("load", () => {
+  runIntro();
+});
+
+
 const translations = { hu, en };
 
 // --- Nav elem --- (ez kell a splitChars-nak)
@@ -24,6 +31,13 @@ function setLanguage(lang) {
       el.textContent = translations[lang][key];
     }
   });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+  const key = el.dataset.i18nPlaceholder;
+  if (translations[lang][key]) {
+    el.placeholder = translations[lang][key];
+  }
+});
 
   updateBlocks(lang);
 
@@ -112,3 +126,13 @@ nav.addEventListener("transitionend", (e) => {
 
 const menuOpenBtn = document.getElementById("menu-open");
 menuOpenBtn.addEventListener("click", openNav);
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+
+document.querySelectorAll('textarea').forEach(el => {
+  el.addEventListener('input', () => autoResize(el));
+});
+

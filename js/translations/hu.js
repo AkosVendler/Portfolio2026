@@ -19,5 +19,13 @@ export default {
     "branding": "Arculat",
     "webdev": "Web Fejlesztés",
     "logo": "Logó Tervezés",
-    "wireframe": "Drótváz Tervezés"
+    "wireframe": "Drótváz Tervezés",
+    "footer-question": "Dolgozunk együtt?",
+    "footer-text": "Én készen állok ha te is",
+    "footer-name-label": "(Teljes név)*",
+    "footer-email-label": "(Email)*",
+    "footer-phone-label": "(Telefonszám)*",
+    "footer-message-label": "(Üzenet)*",
+    "footer-message-placeholder": "Írd ide az üzeneted...",
+    "footer-submit": "Küldés",
 };

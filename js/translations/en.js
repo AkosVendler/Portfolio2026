@@ -19,5 +19,13 @@ export default {
     "branding": "Brand Identity",
     "webdev": "Web Development",
     "logo": "Logo Design",
-    "wireframe": "Wireframing"
+    "wireframe": "Wireframing",
+    "footer-question": "Wanna make something awesome?",
+    "footer-text": "I'm ready if you are",
+    "footer-name-label": "(Full Name)*",
+    "footer-email-label": "(Email)*",
+    "footer-phone-label": "(Phone Number)*",
+    "footer-message-label": "(Message)*",
+    "footer-message-placeholder": "Type your message here...",
+    "footer-submit": "Send",
 };
