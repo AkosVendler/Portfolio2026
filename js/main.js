@@ -4,8 +4,11 @@ import { blockDefs } from "./servicesSection.js";
 
 import { runIntro } from './introAnimation.js';
 
+
 window.addEventListener("load", () => {
-  runIntro();
+  if (document.querySelector("#loader")) {
+    runIntro();
+  }
 });
 
 
@@ -14,6 +17,7 @@ const translations = { hu, en };
 // --- Nav elem --- (ez kell a splitChars-nak)
 const nav = document.getElementById("main-nav");
 const closeBtn = document.querySelector(".nav-close");
+
 
 function updateBlocks(lang) {
   blockDefs.forEach(def => {
@@ -33,11 +37,11 @@ function setLanguage(lang) {
   });
 
   document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-  const key = el.dataset.i18nPlaceholder;
-  if (translations[lang][key]) {
-    el.placeholder = translations[lang][key];
-  }
-});
+    const key = el.dataset.i18nPlaceholder;
+    if (translations[lang][key]) {
+      el.placeholder = translations[lang][key];
+    }
+  });
 
   updateBlocks(lang);
 

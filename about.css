@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-synthesis: none !important;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "General Sans Medium", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: clamp(3rem, 5vw, 7rem);
+    font-weight: 900;
+    line-height: 0.9;
+}
+
+
+section {
+    position: relative;
+    width: 100%;
+    height: 150svh;
+    color: var(--text);
+    overflow: hidden;
+}
+
+.intro,
+.outro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--bg);
+}
+
+.spotlight {
+    background: #F8F1FF;
+}
+
+.svg-container svg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-35%);
+    width: 50%;
+    min-width: 700px;
+}
+
+path[style*="00000165916812323603747700000005172204528299523731"],
+path[style*="00000155118913244152270350000004269844240891065749"] {
+    fill: var(--bg) !important;
+}
+
+.spotlight-header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 40%;
+    z-index: 2;
+}
+
+@media (max-width: 1000px) {
+
+    .intro h1,
+    .outro h1 {
+        width: 75%;
+    }
+
+    .spotlight-header {
+        width: 90%;
+    }
+}
+
+.about-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #F8F1FF;
+}
+
+.about-title h1 {
+    font-size: 10cqi;
+    line-height: 1;
+    font-weight: bold;
+    font-family: "Thunder ExtraBoldLC", sans-serif;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 0.7;
+    padding-top: 100px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.about-section {
+    width: 100%;
+    height: 150vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    background: #0f0a0a;
+    gap: 100px;
+}
+
+.about-section h1 {
+    font-size: 10cqi;
+    line-height: 1;
+    font-weight: bold;
+    font-family: "Thunder ExtraBoldLC", sans-serif;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 0.7;
+    padding-top: 100px;
+    -webkit-font-smoothing: antialiased;
+    color: #F8F1FF;
+}
+
+.about-section p {
+    color: #F8F1FF;
+    font-size: 2cqi;
+    max-width: 40%;
+    text-align: center;
+    font-family: "General Sans Regular", sans-serif;
+}
+
+.marquee-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f0a0a;
+    position: relative;
+    top: 120px;
+    overflow-x: visible;
+    z-index: 10;
+}
+
+.marquee-title h1 {
+    font-size: 10cqi;
+    line-height: 1;
+    font-weight: bold;
+    font-family: "Thunder ExtraBoldLC", sans-serif;
+    text-transform: uppercase;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    color: #F8F1FF;
+    max-width: 50%;
+    text-align: center;
+}
+
+.marquee-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #0f0a0a;
+    position: relative;
+    margin-bottom: 200px;
+}
+
+.marquee {
+    padding: 1vw;
+    white-space: nowrap;
+    width: 150%;
+    position: relative;
+}
+
+.marquee:first-child {
+    background-color: #ff8200;
+    transform: rotateZ(-10deg) translateX(-15%);
+}
+
+.marquee:last-child {
+    background-color: #F8F1FF;
+    transform: rotateZ(13deg) translateX(-5%);
+    margin-top: -80px;
+}
+
+.marquee__inner {
+    display: flex;
+    gap: 20px;
+}
+
+.marquee__content {
+    color: #F8F1FF;
+    font-size: clamp(50px, 15.5vw, 140px);
+    font-weight: bold;
+    font-family: "Thunder ExtraBoldLC", sans-serif;
+    text-transform: uppercase;
+}
+
+.marquee:last-child .marquee__content {
+    color: #0f0a0a;
+}
+
+.marquee__word {
+    display: inline-block;
+}
+
+.marquee__dot {
+    display: inline-block;
+    margin: 0 50px;
+}
+
+.music-section {
+    width: 100%;
+    height: 450px;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 200px;
+}
+
+.music-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    color: #F8F1FF;
+}
+
+.music-content h2 {
+    font-size: 4cqi;
+    overflow: visible;
+    line-height: 1;
+    font-weight: bold;
+    font-family: "Thunder ExtraBoldLC", sans-serif;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    color: #F8F1FF;
+}
+
+.music-content p {
+     color: #F8F1FF;
+    font-size: 1cqi;
+    font-family: "General Sans Regular", sans-serif;
+}

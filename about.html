@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="./about.css">
+    <link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./landing.css">
+    <link rel="stylesheet" href="./nav.css">
+</head>
+
+<body style="background-color: #0f0a0a;">
+    <nav>
+        <button id="theme-toggle" disabled data-i18n="dark-mode"></button>
+        <button id="menu-open" data-i18n="menu"></button>
+        <a href="#contact" data-i18n="contact"></a>
+    </nav>
+
+    <!-- Fullscreen nav -->
+    <div id="main-nav" class="hero-reveal">
+        <div class="nav-lang">
+            <button class="lang-btn" data-lang="hu">HU</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="./index.html" data-i18n="nav-home" class="nav-link">Home</a></li>
+            <li><a href="./about.html" data-i18n="nav-about" class="nav-link">About</a></li>
+            <li><a href="#" data-i18n="nav-work" class="nav-link">Work</a></li>
+            <li><a href="#" data-i18n="nav-contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <button class="nav-close" data-i18n="nav-close">Bezárás</button>
+    </div>
+
+    <div class="about-title">
+        <h1 data-i18n="about-title"></h1>
+    </div>
+
+    <section class="spotlight">
+        <div class="svg-container"></div>
+    </section>
+    <div class="about-section">
+        <h1 data-i18n="about-section-title"></h1>
+        <img src="./media/jimmi-hi.gif" alt="">
+        <p data-i18n="about-section-paragraph"></p>
+    </div>
+
+    <div class="marquee-title">
+        <h1 data-i18n="marquee-title"></h1>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee" data-marquee-duration="50">
+            <div class="marquee__inner">
+                <div class="marquee__content"></div>
+            </div>
+        </div>
+
+        <div class="marquee" data-marquee-duration="50">
+            <div class="marquee__inner">
+                <div class="marquee__content"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-section">
+        <div class="music-content">
+            <h2 data-i18n="music-title"></h2>
+            <p data-i18n="music-paragraph"></p>
+        </div>
+        <h1 data-i18n="marquee-title"></h1>
+
+        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450"
+            style="width:100%;max-width:660px;overflow:hidden;background:#0f0a0a;"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.music.apple.com/hu/playlist/design-mode-on/pl.u-b3b8V47ty8LP96r"></iframe>
+    </div>
+</body>
+
+
+<script type="module" src="./js/themeselector.js"></script>
+<script type="module" src="./js/about.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script src="https://unpkg.com/split-type"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script type="module" src="./js/main.js"></script>
+
+</html>

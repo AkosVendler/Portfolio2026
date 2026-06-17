@@ -13,6 +13,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
+    background-color: var(--bg);
 }
 
 nav button {

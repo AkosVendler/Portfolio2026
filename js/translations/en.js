@@ -14,7 +14,7 @@ export default {
     "country": "Hungary",
     "featured-works": "Featured Works",
     "services-title": "Services",
-    "services-hint":"Drag them around, you're the designer here!",
+    "services-hint": "Drag them around, you're the designer here!",
     "uxui": "UX/UI Design",
     "branding": "Brand Identity",
     "webdev": "Web Development",
@@ -28,4 +28,10 @@ export default {
     "footer-message-label": "(Message)*",
     "footer-message-placeholder": "Type your message here...",
     "footer-submit": "Send",
+    "about-title": "About me",
+    "about-section-title": "Welcome to my little world!",
+    "about-section-paragraph": "I’m Ákos Vendler, a 19-year-old IT technician by qualification, and I’ve been into UI/UX design for 3 years. I love challenges and flashy effects but if you’ve made it this far, you’ve probably already noticed that",
+    "marquee-title": "Things I’m pretty good at",
+    "music-title": "If you're curious what’s playing while I work",
+    "music-paragraph": "Besides design, music is the other thing I can easily get lost in. It’s what’s usually playing in the background of most of my projects."
 };

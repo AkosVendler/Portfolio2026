@@ -1,6 +1,7 @@
 import hu from "./translations/hu.js";
 import en from "./translations/en.js";
 
+
 const themeBtn = document.getElementById("theme-toggle");
 
 const translations = { hu, en };

@@ -28,4 +28,10 @@ export default {
     "footer-message-label": "(Üzenet)*",
     "footer-message-placeholder": "Írd ide az üzeneted...",
     "footer-submit": "Küldés",
+    "about-title": "Rólam",
+    "about-section-title": "Üdv a Világomban!",
+    "about-section-paragraph": "Vendler Ákos vagyok, 19 éves informatikai technikus a végzettségem, UI/UX tervezéssel 3 éve foglalkozok. Szeretem a kihívásokat és a sok effektet de ha ideáig eljutottál biztosan észrevetted",
+    "marquee-title": "Dolgok amikben jó vagyok",
+    "music-title": "Ha kíváncsi vagy, mi szól munka közben",
+    "music-paragraph": "A design mellett a zene a másik dolog, amiben könnyen elvesztem. Ez szól a háttérben a legtöbb projektnél.",
 };
