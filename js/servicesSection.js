@@ -127,6 +127,7 @@ if (section) {
   }
 
   function onDown(e) {
+    if (window.innerWidth < 1000) return;
     const pos = getPos(e);
     const hit = hitTest(pos.x, pos.y);
     if (!hit) return;

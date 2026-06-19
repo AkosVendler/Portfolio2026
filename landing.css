@@ -185,7 +185,7 @@ nav a {
     align-items: center;
     padding: 60px 40px;
     gap: 40px;
-    margin-top: 400px;
+    margin-top: 700px;
     margin-bottom: 400px;
 }
 
@@ -213,6 +213,7 @@ footer {
     margin-bottom: 0px;
     padding-bottom: 0px;
     max-width: 100%;
+    padding-top: 40px;
 }
 
 .footer-content p {
@@ -233,7 +234,6 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 40px;
-    margin-top: 100px;
 }
 
 .form-input-field {
@@ -315,6 +315,131 @@ form button {
 }
 
 footer img {
-    width: 20%;
+    padding-top: 100px;
+    width: 40%;
     object-fit: contain;
+}
+
+@media (max-width: 1000px) {
+
+    .hero {
+        padding: 0 20px;
+    }
+
+    nav {
+        padding: 20px 20px;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title {
+        padding-top: 40px;
+    }
+
+    .video-wrapper {
+        width: 100%;
+    }
+
+    .hero-title {
+        padding-top: 50px;
+        align-items: center;
+    }
+
+    .hero-title h2 {
+        font-size: 15cqi;
+    }
+
+    .timezone p {
+        font-size: 12px;
+    }
+
+    .location p {
+        font-size: 12px;
+    }
+
+    .featured-works {
+        padding: 0 20px;
+    }
+
+    .featured-title h1 {
+        font-size: 18.5cqi;
+        padding-top: 0;
+    }
+
+    .works-grid {
+        flex-direction: column;
+    }
+
+    .work-item {
+        width: 100%;
+    }
+
+    .work-item h3 {
+        font-size: 4cqi;
+    }
+
+    .services {
+        margin-top: 200px;
+        padding: 0 20px;
+        margin-bottom: 100px;
+    }
+
+    .services h1{
+        font-size: 17cqi;
+    }
+
+    .footer {
+        padding: 0 20px;
+        flex-direction: column;
+    }
+
+    .footer-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 50px;
+    }
+
+    .footer-content h2 {
+        font-size: 15cqi;
+    }
+
+    .footer-content p {
+        font-size: 5cqi;
+        padding-top: 20px;
+    }
+
+    .footer-content img {
+        padding-top: 30px;
+        width: 50%;
+    }
+
+    .footer-form {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .form-input-field input {
+        margin-top: 5px;
+        padding-top: 10px;
+        font-size: 25px;
+        height: 50px;
+    }
+    .form-input-field input::placeholder {
+        font-size: 25px;
+    }
+
+    .form-input-field textarea {
+        padding-top: 10px;
+        font-size: 25px;
+    }
 }

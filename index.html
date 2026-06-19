@@ -99,7 +99,12 @@
             <h2 data-i18n="footer-question">Dolgozunk együtt?</h2>
             <p data-i18n="footer-text">Én készen állok ha te is</p>
 
-            <div class="footer-form">
+            
+            <img src="./media/cat-crazy-cat.gif">
+
+        </div>
+        
+        <div class="footer-form">
                 <form action="/" method="POST">
                     <div class="form-input-field">
                         <label for="name" data-i18n="footer-name-label"></label>
@@ -120,26 +125,10 @@
                     <button type="submit" data-i18n="footer-submit">Küldés</button>
                 </form>
             </div>
-
-        </div>
-        
-        <img src="./media/cat-crazy-cat.gif">
     </footer>
 </body>
 
-<script>
-    function updateTime() {
-        const budapestTime = new Date().toLocaleTimeString("hu-HU", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            timeZone: "Europe/Budapest"
-        });
-        document.getElementById("budapest-time").textContent = budapestTime;
-    }
-    setInterval(updateTime, 1000);
-    updateTime();
-</script>
+
 
 <script src="https://unpkg.com/split-type"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

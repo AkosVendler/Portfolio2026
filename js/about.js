@@ -8,6 +8,8 @@ const translations = { hu, en };
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    document.body.classList.remove("dark");
     const lenis = new Lenis();
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((time) => {
@@ -18,11 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
     const XLINK_NAMESPACE = "http://www.w3.org/1999/xlink";
 
+    const isMobile = window.innerWidth < 1000;
+
     const settings = {
         lensImageURL: "../media/work1.png",
         glaresPerLens: 2,
         finalZoomScale: 22,
-        zoomFocusPoint: "35% 19%",
+        zoomFocusPoint: window.innerWidth < 1000
+            ? "35% 18%"
+            : "35% 19%",
     };
 
     document.querySelector(".svg-container").innerHTML = doodleSVG;
@@ -109,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.create({
         trigger: spotlightSection,
         start: "top top",
-        end: () => "+=" + window.innerHeight * 2,
+        end: () => "+=" + window.innerHeight,
         pin: true,
         pinSpacing: true,
         scrub: true,
@@ -184,3 +190,24 @@ const init = () => {
 
 document.addEventListener('DOMContentLoaded', init);
 
+
+function splitChars() {
+  document.querySelectorAll(".social-link").forEach(link => {
+    const text = link.textContent.trim();
+    link.innerHTML = text
+      .split("")
+      .map(ch => ch === " " ? " " : `<span class="char">${ch}</span>`)
+      .join("");
+
+    link.style.transition = "none";
+    link.style.transform = "translateY(110%)";
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        link.style.transition = "";
+        link.style.transform = "";
+      });
+    });
+  });
+}
+splitChars();

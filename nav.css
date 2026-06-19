@@ -115,3 +115,10 @@
 
 .nav-link:hover .char:nth-child(odd)  { transform: translateY(-5%); }
 .nav-link:hover .char:nth-child(even) { transform: translateY(5%); }
+
+@media (max-width: 1000px) {
+
+    .nav-link {
+        font-size: 20vw;
+    }
+}
