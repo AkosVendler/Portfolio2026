@@ -11,18 +11,18 @@
     <link rel="stylesheet" href="./nav.css">
 </head>
 
-<body style="background-color: #0f0a0a;">
+<body style="background: #0f0a0a;">
     <nav>
-        <button id="theme-toggle" class="disabled" disabled data-i18n="dark-mode"></button>
-        <button id="menu-open" data-i18n="menu"></button>
-        <a href="#contact" data-i18n="contact"></a>
+        <button id="theme-toggle" onclick="click_sound(this)" data-i18n="dark-mode"></button>
+        <button id="menu-open" onclick="click_sound(this)" data-i18n="menu"></button>
+        <a href="#contact" onclick="click_sound(this)" data-i18n="contact"></a>
     </nav>
 
     <!-- Fullscreen nav -->
     <div id="main-nav" class="hero-reveal">
         <div class="nav-lang">
-            <button class="lang-btn" data-lang="hu">HU</button>
-            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" onclick="click_sound(this)" data-lang="hu">HU</button>
+            <button class="lang-btn" onclick="click_sound(this)" data-lang="en">EN</button>
         </div>
 
         <ul class="nav-links">
@@ -32,7 +32,7 @@
             <li><a href="#" data-i18n="nav-contact" class="nav-link">Contact</a></li>
         </ul>
 
-        <button class="nav-close" data-i18n="nav-close">Bezárás</button>
+        <button class="nav-close" onclick="click_sound(this)" data-i18n="nav-close">Bezárás</button>
     </div>
 
     <div class="about-title">
@@ -43,13 +43,13 @@
         <div class="svg-container"></div>
     </section>
     <div class="about-section">
-        <h1 data-i18n="about-section-title"></h1>
+        <h1 data-i18n="about-section-title" letters-slide-up text-split></h1>
         <img src="./media/jimmi-hi.gif" alt="">
-        <p data-i18n="about-section-paragraph"></p>
+        <p words-slide-up text-split data-i18n="about-section-paragraph"></p>
     </div>
 
     <div class="marquee-title">
-        <h1 data-i18n="marquee-title"></h1>
+        <h1 class="pskd-content__1 pskd-reveal" data-pskd-color="#FF8200" data-i18n="marquee-title"></h1>
     </div>
 
     <div class="marquee-container">
@@ -72,8 +72,8 @@
             <p data-i18n="music-paragraph"></p>
         </div>
 
-        <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="450"
-            style="width:100%;max-width:660px;overflow:hidden;background:#0f0a0a;"
+        <iframe class="apple-music" allow="autoplay *; encrypted-media *;" frameborder="0" height="1200"
+            style="width:100%;max-width:660px;overflow:visible;background:#0f0a0a;"
             sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
             src="https://embed.music.apple.com/hu/playlist/design-mode-on/pl.u-b3b8V47ty8LP96r"></iframe>
     </div>
@@ -88,6 +88,7 @@
 
 <script type="module" src="./js/themeselector.js"></script>
 <script type="module" src="./js/about.js"></script>
+<script src="./js/clickSound.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 <script src="https://unpkg.com/split-type"></script>

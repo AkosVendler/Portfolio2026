@@ -24,16 +24,16 @@
     </div>
 
     <nav>
-        <button id="theme-toggle" data-i18n="dark-mode"></button>
-        <button id="menu-open" data-i18n="menu"></button>
-        <a href="#contact" data-i18n="contact"></a>
+        <button id="theme-toggle" onclick="click_sound(this)" data-i18n="dark-mode"></button>
+        <button id="menu-open" onclick="click_sound(this)" data-i18n="menu"></button>
+        <a href="#contact" onclick="click_sound(this)" data-i18n="contact"></a>
     </nav>
 
     <!-- Fullscreen nav -->
     <div id="main-nav" class="hero-reveal">
         <div class="nav-lang">
-            <button class="lang-btn" data-lang="hu">HU</button>
-            <button class="lang-btn" data-lang="en">EN</button>
+            <button class="lang-btn" onclick="click_sound(this)" data-lang="hu">HU</button>
+            <button class="lang-btn" onclick="click_sound(this)" data-lang="en">EN</button>
         </div>
 
         <ul class="nav-links">
@@ -43,7 +43,7 @@
             <li><a href="#" data-i18n="nav-contact" class="nav-link">Contact</a></li>
         </ul>
 
-        <button class="nav-close" data-i18n="nav-close">Bezárás</button>
+        <button class="nav-close" onclick="click_sound(this)" data-i18n="nav-close">Bezárás</button>
     </div>
 
     <div class="hero">
@@ -141,6 +141,7 @@
 <script type="module" src="./js/lenis.js"></script>
 <script type="module" src="./js/servicesSection.js"></script>
 <script type="module" src="./js/introAnimation.js"></script>
+<script src="./js/clickSound.js"></script>
 
 
 </html>
