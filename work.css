@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-synthesis: none !important;
+}
+
+body {
+    color: var(--text);
+    background-color: var(--bg);
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 60px;
+    
+}
+
+p {
+    font-size: 20px;
+
+}
+
+section {
+    width: 100vw;
+    height: 100svh;
+    padding: 40px;
+}
+
+.hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 4em;
+}
+
+.hero h1 {
+    position: relative;
+    left: -0.05em;
+    font-size: 10cqi;
+    font-weight: bold;
+    font-family: "Thunder ExtraBoldLC", sans-serif;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    max-width: 70%;
+    text-box-trim: trim-both;
+    display: inline-block;
+    line-height: 1;
+    display: inline-block;
+    transform: translateY(3px);
+}
+
+.hero-copy {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.hero-text {
+    font-family: "General Sans Medium", sans-serif;
+}
+
+.year {
+    font-size: 6cqi;
+    line-height: 1;
+    font-weight: bold;
+    font-family: "Thunder ExtraBoldLC", sans-serif;
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+}
+
+.outro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro {
+    height: 100%;
+}
+
+.video-container-desktop {
+    position: relative;
+    transform: translateY(-105%) scale(0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    will-change: transform;
+}
+
+.video-container-desktop .video-title p {
+    position: relative;
+    font-size:  78px;
+    font-family: "General Sans Medium", sans-serif;
+
+}
+
+.video-container-mobile {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.video-preview {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: var(--bg);
+    overflow: hidden;
+}
+
+.video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+
+
+@media (max-width: 900px) {
+    section {
+        padding: 20px;
+    }
+
+    .hero {
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2em;
+        height: 40vh;
+    }
+
+    .hero h1 {
+        font-size: 13vw;
+    }
+
+    .year {
+        font-size: 9vw;
+    }
+
+    .video-container-desktop {
+        display: none;
+    }
+
+    .video-container-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+}

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./theme.css">
     <link rel="stylesheet" href="./nav.css">
     <link rel="stylesheet" href="./services.css">
+    <link rel="stylesheet" href="./footer.css">
 </head>
 
 <body>
@@ -39,7 +40,7 @@
         <ul class="nav-links">
             <li><a href="./index.html" data-i18n="nav-home" class="nav-link">Home</a></li>
             <li><a href="./about.html" data-i18n="nav-about" class="nav-link">About</a></li>
-            <li><a href="#" data-i18n="nav-work" class="nav-link">Work</a></li>
+            <li><a href="./work.html" data-i18n="nav-work" class="nav-link">Work</a></li>
             <li><a href="#" data-i18n="nav-contact" class="nav-link">Contact</a></li>
         </ul>
 
@@ -94,37 +95,27 @@
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <h2 data-i18n="footer-question">Dolgozunk együtt?</h2>
-            <p data-i18n="footer-text">Én készen állok ha te is</p>
-
-            
+    <footer>
+        <div class="image-container">
             <img src="./media/cat-crazy-cat.gif">
-
+            <h1 data-i18n="footer-question"></h1>
         </div>
-        
-        <div class="footer-form">
-                <form action="/" method="POST">
-                    <div class="form-input-field">
-                        <label for="name" data-i18n="footer-name-label"></label>
-                        <input type="text" name="name" placeholder="NAGY ÁDÁM" required>
-                    </div>
-                    <div class="form-input-field">
-                        <label for="email" data-i18n="footer-email-label"></label>
-                        <input type="email" name="email" placeholder="Nagyadam@gmail.com" required>
-                    </div>
-                    <div class="form-input-field">
-                        <label for="phone" data-i18n="footer-phone-label"></label>
-                        <input type="phone" name="phone" placeholder="06701234567" required>
-                    </div>
-                    <div class="form-input-field">
-                        <label for="message" data-i18n="footer-message-label"></label>
-                        <textarea name="message" data-i18n-placeholder="footer-message-placeholder" required></textarea>
-                    </div>
-                    <button type="submit" data-i18n="footer-submit">Küldés</button>
-                </form>
+
+        <div class="contact-section">
+            <p data-i18n="footer-text"></p>
+            <a href="mailto:vendler.akos@gmail.com">vendler.akos@gmail.com</a>
+        </div>
+
+        <div class="footer-content">
+            <div class="link-wrapper">
+                <a href="https://instagram.com/_vndlrakos_" target="_blank">Instagram</a>
+                <a href="https://www.behance.net/akosvendler" target="_blank">Behance</a>
+                <a href="https://www.linkedin.com/in/%C3%A1kos-vendler-3a2a883b2/" target="_blank">Linkedin</a>
             </div>
+
+            <p class="copyright">© 2026 - vendler ákos</p>
+        </div>
+
     </footer>
 </body>
 

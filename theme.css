@@ -46,3 +46,10 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "General Sans Italic";
+  src: url("../fonts/GeneralSans-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
