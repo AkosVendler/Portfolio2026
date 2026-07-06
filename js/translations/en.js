@@ -27,5 +27,7 @@ export default {
     "about-section-paragraph": "I’m Ákos Vendler, a 19-year-old IT technician by qualification, and I’ve been into UI/UX design for 3 years. I love challenges and flashy effects but if you’ve made it this far, you’ve probably already noticed that",
     "marquee-title": "Things I’m pretty good at",
     "music-title": "If you're curious what’s playing while I work",
-    "music-paragraph": "Besides design, music is the other thing I can easily get lost in. It’s what’s usually playing in the background of most of my projects."
+    "music-paragraph": "Besides design, music is the other thing I can easily get lost in. It’s what’s usually playing in the background of most of my projects.",
+    "work-title": "Take a look at my past work",
+    "work-text": "Year",
 };

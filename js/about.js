@@ -16,49 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   gsap.ticker.lagSmoothing(0);
 
-  function initTextAnimations() {
-    document.querySelectorAll("[text-split]").forEach((el) => {
-      new SplitType(el, { types: "words, chars", tagName: "span" });
-    });
-
-    function createScrollTrigger(tl, start = "bottom+=400px 100%") {
-      const triggerEl = document.querySelector(".about-section");
-
-      ScrollTrigger.create({
-        trigger: triggerEl,
-        start: start,
-        once: true,
-        onEnter: () => tl.play(),
-      });
-    }
-
-    document.querySelectorAll("[words-slide-up]").forEach((el) => {
-      const tl = gsap.timeline({ paused: true });
-      tl.from(el.querySelectorAll(".word"), {
-        opacity: 0,
-        yPercent: 100,
-        duration: 0.5,
-        ease: "power4.inOut",
-        stagger: { amount: 0.5 },
-      });
-      createScrollTrigger(tl);
-    });
-
-    document.querySelectorAll("[letters-slide-up]").forEach((el) => {
-      const tl = gsap.timeline({ paused: true });
-      const chars = el.querySelectorAll(".char");
-      tl.from(chars, {
-        yPercent: 100,
-        duration: 0.35,
-        ease: "power1.out",
-        stagger: { amount: 0.6 },
-      });
-      createScrollTrigger(tl, "bottom-=200px 80%");
-    });
-  }
-
-  initTextAnimations();
-
   class PskdReveal {
     constructor(element, options = {}) {
       this.element = element;

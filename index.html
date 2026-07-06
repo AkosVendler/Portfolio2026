@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./nav.css">
     <link rel="stylesheet" href="./services.css">
     <link rel="stylesheet" href="./footer.css">
+    <link rel="stylesheet" href="./transition.css">
 </head>
 
 <body>
@@ -24,27 +25,29 @@
         </div>
     </div>
 
+    <div id="page-transition"></div>
+
     <nav>
-        <button id="theme-toggle" onclick="click_sound(this)" data-i18n="dark-mode"></button>
-        <button id="menu-open" onclick="click_sound(this)" data-i18n="menu"></button>
-        <a href="#contact" onclick="click_sound(this)" data-i18n="contact"></a>
+        <button id="theme-toggle" onclick="playSound('click')" data-i18n="dark-mode"></button>
+        <button id="menu-open" onclick="playSound('click')" data-i18n="menu"></button>
+        <a href="mailto:vendler.akos@gmail.com" onclick="playSound('click')" data-i18n="contact"></a>
     </nav>
 
     <!-- Fullscreen nav -->
     <div id="main-nav" class="hero-reveal">
         <div class="nav-lang">
-            <button class="lang-btn" onclick="click_sound(this)" data-lang="hu">HU</button>
-            <button class="lang-btn" onclick="click_sound(this)" data-lang="en">EN</button>
+            <button class="lang-btn" onclick="playSound('click')" data-lang="hu">HU</button>
+            <button class="lang-btn" onclick="playSound('click')" data-lang="en">EN</button>
         </div>
 
         <ul class="nav-links">
-            <li><a href="./index.html" data-i18n="nav-home" class="nav-link">Home</a></li>
-            <li><a href="./about.html" data-i18n="nav-about" class="nav-link">About</a></li>
-            <li><a href="./work.html" data-i18n="nav-work" class="nav-link">Work</a></li>
-            <li><a href="#" data-i18n="nav-contact" class="nav-link">Contact</a></li>
+            <li><a href="./index.html" onclick="playSound('click')" data-i18n="nav-home" class="nav-link">Home</a></li>
+            <li><a href="./about.html" onclick="playSound('click')" data-i18n="nav-about" class="nav-link">About</a></li>
+            <li><a href="./work.html" onclick="playSound('click')" data-i18n="nav-work" class="nav-link">Work</a></li>
+            <li><a href="mailto:vendler.akos@gmail.com" onclick="playSound('click')" data-i18n="nav-contact" class="nav-link">Contact</a></li>
         </ul>
 
-        <button class="nav-close" onclick="click_sound(this)" data-i18n="nav-close">Bezárás</button>
+        <button class="nav-close" onclick="playSound('close')" data-i18n="nav-close">Bezárás</button>
     </div>
 
     <div class="hero">
@@ -117,8 +120,13 @@
         </div>
 
     </footer>
+
 </body>
 
+
+<script>
+   function startClock() { const el = document.getElementById("budapest-time"); if (!el) return; const tick = () => { el.textContent = new Date().toLocaleTimeString("hu-HU", { hour: "2-digit", minute: "2-digit", second: "2-digit", timeZone: "Europe/Budapest", }); }; tick(); setInterval(tick, 1000); } startClock();
+</script>
 
 
 <script src="https://unpkg.com/split-type"></script>
@@ -133,6 +141,7 @@
 <script type="module" src="./js/servicesSection.js"></script>
 <script type="module" src="./js/introAnimation.js"></script>
 <script src="./js/clickSound.js"></script>
+<script type="module" src="./js/pageTransition.js"></script>
 
 
 </html>

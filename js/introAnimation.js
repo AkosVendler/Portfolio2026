@@ -1,6 +1,17 @@
 gsap.registerPlugin(ScrollTrigger);
 
 export function runIntro() {
+
+  const hasPlayedIntro = sessionStorage.getItem("introPlayed");
+
+  if (hasPlayedIntro) {
+    if (document.getElementById("loader")) {
+      document.getElementById("loader").style.display = "none";
+    }
+    return;
+  }
+
+  sessionStorage.setItem("introPlayed", "true");
   // ─── Óra ───────────────────────────────────────────────────────────────────
   function startClock() {
     const el = document.getElementById("budapest-time");
