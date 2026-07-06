@@ -293,6 +293,15 @@ nav a {
         font-size: 4cqi;
     }
 
+    .fullscreen-work-item {
+        width: 100%;
+        height: auto;
+    }
+
+    .fullscreen-work-item h3 {
+        font-size: 4cqi;
+    }
+
     .services {
         margin-top: 200px;
         padding: 0 20px;
