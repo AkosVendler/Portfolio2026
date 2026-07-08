@@ -1,6 +1,5 @@
 const sounds = {
-    click: new Audio("./media/click.wav"),
-    close: new Audio("./media/close.wav"),
+    click: new Audio("http://localhost:5500/media/click.wav"),
 };
 
 function playSound(soundName) {
@@ -11,6 +10,6 @@ function playSound(soundName) {
         return;
     }
 
-    sound.currentTime = 0; // mindig az elejéről induljon
+    sound.currentTime = 0;
     sound.play();
 }
