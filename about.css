@@ -90,7 +90,7 @@ path[style*="00000155118913244152270350000004269844240891065749"] {
 }
 
 .about-title h1 {
-    font-size: 10cqi;
+    font-size: 15cqi;
     line-height: 1;
     font-weight: bold;
     font-family: "Thunder ExtraBoldLC", sans-serif;
@@ -145,11 +145,10 @@ path[style*="00000155118913244152270350000004269844240891065749"] {
 
 .marquee-title h1 {
     font-size: 10cqi;
-    line-height: 1;
+    line-height: 1.2;
     font-weight: bold;
     font-family: "Thunder ExtraBoldLC", sans-serif;
     text-transform: uppercase;
-    line-height: 1;
     -webkit-font-smoothing: antialiased;
     color: #F8F1FF;
     max-width: 50%;

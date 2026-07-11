@@ -30,4 +30,7 @@ export default {
     "music-paragraph": "A design mellett a zene a másik dolog, amiben könnyen elvesztem. Ez szól a háttérben a legtöbb projektnél.",
     "work-title": "Nézz körül az eddigi munkáim között",
     "work-text": "Év",
+    "contact-title": "Kapcsolat",
+    "contact-link-title": "Dolgozzunk együtt",
+    "social-link-title": "Social média",
 };

@@ -115,8 +115,6 @@
 }
 
 
-
-
 a.norris {
   text-decoration: none;
   text-transform: uppercase;
@@ -124,7 +122,6 @@ a.norris {
   font-size: 1cqi;
   font-weight: 800;
   overflow: hidden;
-  letter-spacing: 0.05rem;
   span {
     position: relative;
     color: transparent;
@@ -182,6 +179,10 @@ a.norris {
 
 path {
     stroke: var(--text);
+}
+
+.spacer {
+    height: 20vh;
 }
 
 @media (max-width: 900px) {

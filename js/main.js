@@ -30,8 +30,16 @@ function updateBlocks(lang) {
 // --- i18n ---
 function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
+
     const key = el.dataset.i18n;
+
     if (translations[lang][key]) {
+
+      // ha a nagy cím SplitType-os, először visszaállítjuk
+      if (el.classList.contains("contact-title") && window.titleSplit) {
+        window.titleSplit.revert();
+      }
+
       el.textContent = translations[lang][key];
     }
   });
@@ -45,6 +53,15 @@ function setLanguage(lang) {
 
   updateBlocks(lang);
 
+
+  // újraméretezés a nagy címekhez nyelvváltás után
+  requestAnimationFrame(() => {
+    if (window.fitText) {
+      window.fitText();
+    }
+  });
+
+
   localStorage.setItem("lang", lang);
 
   document.querySelectorAll(".lang-btn").forEach(btn => {
@@ -56,6 +73,14 @@ function setLanguage(lang) {
   } else {
     splitChars();
   }
+
+
+  // cím újraanimálás nyelvváltás után
+  requestAnimationFrame(() => {
+    if (window.initTitleAnimation) {
+      window.initTitleAnimation();
+    }
+  });
 }
 
 const savedLang = localStorage.getItem("lang") || "hu";
@@ -139,4 +164,3 @@ function autoResize(el) {
 document.querySelectorAll('textarea').forEach(el => {
   el.addEventListener('input', () => autoResize(el));
 });
-

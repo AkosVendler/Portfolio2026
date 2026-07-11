@@ -130,5 +130,4 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
   });
 
-  console.log("Norris animation loaded for ", norrisLink.length, " norrisLink");
 });

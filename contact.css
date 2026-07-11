@@ -1,0 +1,108 @@
+:root {
+  --c-primary: #dde1d2;
+  --c-secondary: #b2c73a;
+  --font-size: 4rem;
+  --a-unit: 10ms;
+  --a-time: calc(var(--a-unit) * 3);
+  --a-delay: calc(var(--a-unit) * 1);
+}
+
+.contact-title {
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    gap: 0.02em;
+    line-height: 0.9;
+    font-weight: bold;
+
+    padding-top: 20px;
+    color: var(--text);
+    font-family: "Thunder ExtraBoldLC", sans-serif;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.contact-title .char {
+    display: inline-block;
+    transform-origin: center;
+    will-change: transform;
+}
+
+.contact-wrapper {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 40px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.link-holder, .social-holder{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: "General Sans Medium", sans-serif;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.link-holder h3, .social-holder h3 {
+    font-family: "General Sans Semibold", sans-serif;
+    padding-bottom: 5px;
+}
+
+.link-holder a, .social-holder a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.gif-container img {
+    width: 70%;
+}
+
+a.contact {
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1.2;
+  font-size: 1cqi;
+  font-weight: 800;
+  overflow: hidden;
+  span {
+    position: relative;
+    color: transparent;
+    &::before,
+    &::after {
+      content: attr(data-char);
+      position: absolute;
+      left: 0;
+      color: var(--text);
+      transition: all ease-out calc(var(--a-time) * 10);
+      transition-delay: calc(sibling-index() * var(--a-delay));
+    }
+    &::before {transform: translateY(0);}
+    &::after {transform: translateY(100%);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: var(--text);
+    span::before,span::after {color: var(--text);}
+    span::before { transform: translateY(-100%);}
+    span::after {transform: translateY(0);}
+  }
+}

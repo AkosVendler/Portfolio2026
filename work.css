@@ -46,7 +46,7 @@ section {
     max-width: 70%;
     text-box-trim: trim-both;
     display: inline-block;
-    line-height: 1;
+    line-height: 1.1;
     display: inline-block;
     transform: translateY(3px);
 }

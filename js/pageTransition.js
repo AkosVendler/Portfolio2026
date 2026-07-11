@@ -1,110 +1,314 @@
-const transition = document.getElementById("page-transition");
+let transition = document.getElementById("page-transition");
 const nav = document.getElementById("main-nav");
 
-/* állítsd be ezt a nav anim időhöz */
-const NAV_CLOSE_DURATION = 600;
-const TRANSITION_DURATION = 900;
+function ensureTransitionElement() {
+    if (transition && document.body.contains(transition)) {
+        return transition;
+    }
 
-function isInternalLink(link) {
-    return (
-        link &&
-        link.href &&
-        link.target !== "_blank" &&
-        link.href.startsWith(window.location.origin)
-    );
+    const el = document.createElement("div");
+    el.id = "page-transition";
+
+    el.style.position = "fixed";
+    el.style.inset = "0";
+    el.style.background =
+        getComputedStyle(document.documentElement)
+            .getPropertyValue("--bg");
+
+    el.style.zIndex = "999999";
+    el.style.willChange = "transform";
+    el.style.backfaceVisibility = "hidden";
+    el.style.pointerEvents = "none";
+
+    document.body.appendChild(el);
+
+    transition = el;
+
+    return transition;
 }
 
-/* NAV CLOSE LOGIC (ha nincs külön, itt kezeli) */
+
+const NAV_CLOSE_DURATION = 1000;
+const TRANSITION_DURATION = 900;
+
+
 function closeNav() {
+
     return new Promise((resolve) => {
+
         if (!nav) {
             resolve();
             return;
         }
 
-        // 👉 itt illeszd a saját nav close classodat
         nav.classList.remove("is-open");
         nav.classList.add("is-closing");
 
+
         setTimeout(() => {
+
             nav.classList.remove("is-closing");
+
             resolve();
-        }, 1000);
+
+        }, NAV_CLOSE_DURATION);
+
     });
+
 }
 
+
+
 document.addEventListener("click", async (e) => {
+
+
     const link = e.target.closest("a");
+
     if (!link) return;
 
+
     if (!link.href || link.target === "_blank") return;
+
+
     if (!link.href.startsWith(window.location.origin)) return;
+
+
 
     e.preventDefault();
 
+
     const href = link.href;
 
-    document.documentElement.classList.add("is-transitioning");
 
-    gsap.set(transition, {
-        y: "100%"
-    });
+    const url = new URL(href);
+
+    const isMainPage =
+        url.pathname === "/" ||
+        url.pathname.endsWith("index.html");
 
 
-    await closeNav();
 
-    // 🔥 EZ A LÉNYEG
-    await new Promise(requestAnimationFrame);
-    await new Promise(requestAnimationFrame);
+    document.documentElement.classList.add(
+        "is-transitioning"
+    );
 
-    await gsap.to(transition, {
-        yPercent: 0,
-        duration: 0.9,
-        ease: "power4.inOut"
-    });
 
-    // 🔥 extra frame biztosítás
-    await new Promise(requestAnimationFrame);
 
-    // 🔥 csak most navigálunk
-    window.location.assign(href);
-});
+    try {
 
-/* PAGE LOAD RESET */
-window.addEventListener("pageshow", () => {
 
-    gsap.set("#page-transition", {
-        y: "100%"
-    });
-    transition.classList.remove("enter");
-    transition.classList.add("exit");
+        const el = ensureTransitionElement();
 
-    setTimeout(() => {
-        transition.classList.remove("exit");
-    }, TRANSITION_DURATION);
-});
 
-function waitForNextPageLoad() {
-    const onLoad = () => {
-        // biztosítjuk hogy az új page renderelt
-        requestAnimationFrame(() => {
-            // 🔥 transition csak akkor megy vissza
-            gsap.to(transition, {
-                yPercent: -100,
-                duration: 0.8,
-                ease: "power4.inOut",
-                onComplete: () => {
-                    document.documentElement.classList.remove("is-transitioning");
 
-                    gsap.set(transition, {
-                        yPercent: 100
-                    });
-                }
-            });
+        // mindig alulról induljon
+
+        gsap.set(el, {
+            yPercent: 100
         });
 
-        window.removeEventListener("load", onLoad);
-    };
 
-    window.addEventListener("load", onLoad);
-}
+
+        el.getBoundingClientRect();
+
+
+
+        // főoldal esetén nincs transition
+
+        if (isMainPage) {
+
+            // 1. NAV BEZÁR
+            await closeNav();
+
+
+            // 2. overlay beállítása
+            const currentBg = getComputedStyle(document.documentElement)
+                .getPropertyValue("--bg");
+
+
+            gsap.set(el, {
+                yPercent: 100,
+                backgroundColor: currentBg
+            });
+
+
+            // 3. overlay feljön alulról
+            await new Promise((resolve) => {
+
+                gsap.to(el, {
+                    yPercent: 0,
+                    duration: TRANSITION_DURATION / 1000,
+                    ease: "power4.inOut",
+                    onComplete: resolve
+                });
+
+            });
+
+
+            // 4. navigáció
+            window.location.assign(href);
+
+            return;
+        }
+
+
+
+
+        // 1. NAV ZÁRÓDIK
+
+        await closeNav();
+
+
+
+
+
+        // 2. OVERLAY FELJÖN ALULRÓL
+
+        await new Promise((resolve) => {
+
+
+            gsap.to(el, {
+
+                yPercent: 0,
+
+                duration:
+                    TRANSITION_DURATION / 1000,
+
+                ease:
+                    "power4.inOut",
+
+                onComplete: resolve
+
+            });
+
+
+        });
+
+
+
+
+
+        await new Promise(requestAnimationFrame);
+
+
+
+
+        // 3. OLDALVÁLTÁS
+
+        window.location.assign(href);
+
+
+
+    } catch (err) {
+
+
+        console.error(
+            "pageTransition error",
+            err
+        );
+
+
+        await closeNav();
+
+        window.location.assign(href);
+
+
+    }
+
+
+});
+
+
+
+
+
+/* ===========================
+   ÚJ OLDAL BETÖLTÉSE
+=========================== */
+
+
+window.addEventListener("pageshow", () => {
+
+
+    const el = ensureTransitionElement();
+
+
+
+    const loader = document.getElementById("loader");
+
+
+    const loaderVisible =
+        loader &&
+        window.getComputedStyle(loader).display !== "none" &&
+        loader.offsetParent !== null;
+
+
+
+
+    if (loaderVisible) {
+
+
+        gsap.set(el, {
+            yPercent: 100
+        });
+
+
+        return;
+
+    }
+
+
+
+
+    // oldal betöltésekor teljes takarás
+
+    gsap.set(el, {
+        yPercent: 0
+    });
+
+
+
+
+
+    requestAnimationFrame(() => {
+
+
+        // overlay lefelé kimegy
+
+        gsap.to(el, {
+
+            yPercent: 100,
+
+            duration:
+                TRANSITION_DURATION / 1000,
+
+
+            ease:
+                "power4.inOut",
+
+
+            onComplete: () => {
+
+
+                document.documentElement.classList.remove(
+                    "is-transitioning"
+                );
+
+
+                gsap.set(el, {
+                    yPercent: 100
+                });
+
+
+            }
+
+
+        });
+
+
+
+    });
+
+
+
+});

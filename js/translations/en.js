@@ -30,4 +30,7 @@ export default {
     "music-paragraph": "Besides design, music is the other thing I can easily get lost in. It’s what’s usually playing in the background of most of my projects.",
     "work-title": "Take a look at my past work",
     "work-text": "Year",
+    "contact-title": "Contact",
+    "contact-link-title": "Let's work together",
+    "social-link-title": "Social media",
 };
