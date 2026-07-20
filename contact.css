@@ -71,7 +71,7 @@
 }
 
 .gif-container img {
-    width: 70%;
+    width: 100%;
 }
 
 a.contact {
@@ -105,4 +105,37 @@ a.contact {
     span::before { transform: translateY(-100%);}
     span::after {transform: translateY(0);}
   }
+}
+
+.link-holder p {
+    font-family: "General Sans Medium", sans-serif;
+    text-transform: uppercase;
+    color: var(--text);
+    font-size: 1cqi;
+}
+
+@media (max-width: 900px) {
+    .contact-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .link-holder, .social-holder {
+        gap: 10px;
+    }
+
+    a.contact {
+        font-size: 4cqi;
+    }
+
+    .link-holder p {
+        font-size: 4cqi;
+    }
 }

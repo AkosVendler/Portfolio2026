@@ -33,4 +33,5 @@ export default {
     "contact-title": "Kapcsolat",
     "contact-link-title": "Dolgozzunk együtt",
     "social-link-title": "Social média",
+    "available": "Elérhető új projektekre",
 };

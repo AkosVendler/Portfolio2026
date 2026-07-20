@@ -476,4 +476,3 @@ if (window.innerWidth < 1000) {
 } else {
   music.setAttribute("height", "450");
 }
-

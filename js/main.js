@@ -134,18 +134,68 @@ function replayEntrance() {
   });
 }
 
-// --- Nav nyitás/zárás ---
+const NAV_CLOSE_DURATION = 1000;
+
+// --- Scroll lock (mobilon is működik) ---
+let scrollY = 0;
+
+function lockScroll() {
+  scrollY = window.scrollY;
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.overflow = "hidden";
+  document.documentElement.style.overflow = "hidden";
+}
+
+function unlockScroll() {
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.documentElement.style.overflow = "";
+  window.scrollTo(0, scrollY);
+}
+
 export function openNav() {
   nav.classList.remove("is-closing");
   nav.classList.add("is-open");
+
+  lockScroll();
 }
 
-function closeNav() {
+export function closeNav() {
+  if (!nav) return Promise.resolve();
+
   nav.classList.add("is-closing");
   nav.classList.remove("is-open");
+
+  unlockScroll();
+
+  return new Promise((resolve) => {
+    const onTransitionEnd = (e) => {
+      if (e.propertyName === "clip-path" && nav.classList.contains("is-closing")) {
+        nav.removeEventListener("transitionend", onTransitionEnd);
+        resolve();
+      }
+    };
+
+    nav.addEventListener("transitionend", onTransitionEnd);
+
+    setTimeout(() => {
+      nav.removeEventListener("transitionend", onTransitionEnd);
+      if (nav.classList.contains("is-closing")) {
+        nav.classList.remove("is-closing");
+      }
+      resolve();
+    }, NAV_CLOSE_DURATION);
+  });
 }
 
-closeBtn.addEventListener("click", closeNav);
+closeBtn.addEventListener("click", () => {
+  closeNav();
+});
 
 nav.addEventListener("transitionend", (e) => {
   if (e.propertyName === "clip-path" && nav.classList.contains("is-closing")) {
@@ -163,4 +213,69 @@ function autoResize(el) {
 
 document.querySelectorAll('textarea').forEach(el => {
   el.addEventListener('input', () => autoResize(el));
+});
+
+
+
+function fitText() {
+    const title = document.querySelector(".featured-work-title");
+
+    if (!title) return;
+
+    let size = 500;
+    title.style.fontSize = size + "px";
+
+    const targetWidth = window.innerWidth * 0.96;
+
+    while (title.getBoundingClientRect().width < targetWidth && size < 800) {
+        size += 1;
+        title.style.fontSize = size + "px";
+    }
+
+    while (title.getBoundingClientRect().width > targetWidth) {
+        size -= 1;
+        title.style.fontSize = size + "px";
+    }
+}
+
+
+function fitTextPageTitle() {
+    const title = document.querySelector(".page-title");
+
+    if (!title) return;
+
+    let size = 500;
+    title.style.fontSize = size + "px";
+
+    const targetWidth = window.innerWidth * 0.96;
+
+    while (title.getBoundingClientRect().width < targetWidth && size < 800) {
+        size += 1;
+        title.style.fontSize = size + "px";
+    }
+
+    while (title.getBoundingClientRect().width > targetWidth) {
+        size -= 1;
+        title.style.fontSize = size + "px";
+    }
+}
+
+
+// külön néven exportáljuk mindkettőt
+window.fitText = fitText;
+window.fitTextPageTitle = fitTextPageTitle;
+
+
+window.addEventListener("resize", () => {
+    requestAnimationFrame(() => {
+        fitText();
+        fitTextPageTitle();
+    });
+});
+
+
+// első betöltésnél is fusson
+window.addEventListener("load", () => {
+    fitText();
+    fitTextPageTitle();
 });

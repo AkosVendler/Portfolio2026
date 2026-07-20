@@ -35,7 +35,7 @@ function initTitleAnimation() {
 
 
     requestAnimationFrame(() => {
-        fitText();
+        fitcontactText();
     });
 
 
@@ -65,35 +65,34 @@ function initTitleAnimation() {
         }, "<");
 
 }
-function fitText() {
 
+function fitcontactText() {
     const title = document.querySelector(".contact-title");
-
     if (!title) return;
 
-
     let size = 500;
-
     title.style.fontSize = size + "px";
 
+    let targetWidth; // <- kívül deklarálva
 
-    const targetWidth = window.innerWidth * 0.962;
-
+    if (window.innerWidth > 900) {
+        targetWidth = window.innerWidth * 0.962;
+    } else {
+        targetWidth = window.innerWidth * 0.9;
+    }
 
     while (title.getBoundingClientRect().width < targetWidth && size < 800) {
         size += 1;
         title.style.fontSize = size + "px";
     }
 
-
     while (title.getBoundingClientRect().width > targetWidth) {
         size -= 1;
         title.style.fontSize = size + "px";
     }
-
 }
 
-window.fitText = fitText;
+window.fitcontactText = fitcontactText;
 window.initTitleAnimation = initTitleAnimation;
 
 
@@ -104,7 +103,7 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", () => {
 
     requestAnimationFrame(() => {
-        fitText();
+        fitcontactText();
     });
 
 });

@@ -1,3 +1,5 @@
+import { closeNav } from "./main.js";
+
 let transition = document.getElementById("page-transition");
 const nav = document.getElementById("main-nav");
 
@@ -28,35 +30,7 @@ function ensureTransitionElement() {
 }
 
 
-const NAV_CLOSE_DURATION = 1000;
 const TRANSITION_DURATION = 900;
-
-
-function closeNav() {
-
-    return new Promise((resolve) => {
-
-        if (!nav) {
-            resolve();
-            return;
-        }
-
-        nav.classList.remove("is-open");
-        nav.classList.add("is-closing");
-
-
-        setTimeout(() => {
-
-            nav.classList.remove("is-closing");
-
-            resolve();
-
-        }, NAV_CLOSE_DURATION);
-
-    });
-
-}
-
 
 
 document.addEventListener("click", async (e) => {

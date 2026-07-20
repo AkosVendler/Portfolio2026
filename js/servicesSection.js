@@ -6,6 +6,8 @@ const translations = { hu, en };
 
 const section = document.getElementById('physics-section');
 
+const MOBILE_BREAKPOINT = 900;
+
 let W = 0;
 let H = 0;
 
@@ -23,22 +25,29 @@ if (section) {
     { cls:'block-drotviaz', key:'wireframe', rot:0.35,  x:W*0.80, y:H*0.25, vertical:true  },
   );
 
-  const engine = Engine.create({
-    gravity: { x: 0, y: 1.2 },
-    positionIterations: 20,
-    velocityIterations: 16,
-    constraintIterations: 4
-  });
-  const world = engine.world;
-  const runner = Runner.create();
-  Runner.run(runner, engine);
+  // Mobil nézetben (900px alatt) nem fut fizika, csak stackelt layout
+  let isMobileMode = window.innerWidth < MOBILE_BREAKPOINT;
 
-  const wOpt = { isStatic: true, restitution: 0.3, friction: 0.5 };
-  const floor   = Bodies.rectangle(W/2,  H+25,  W*4, 50,  wOpt);
-  const wallL   = Bodies.rectangle(-25,  H/2,   50,  H*4, wOpt);
-  const wallR   = Bodies.rectangle(W+25, H/2,   50,  H*4, wOpt);
-  const ceiling = Bodies.rectangle(W/2,  -25,   W*4, 50,  wOpt);
-  World.add(world, [floor, wallL, wallR, ceiling]);
+  let engine, world, runner, floor, wallL, wallR, ceiling;
+
+  if (!isMobileMode) {
+    engine = Engine.create({
+      gravity: { x: 0, y: 1.2 },
+      positionIterations: 20,
+      velocityIterations: 16,
+      constraintIterations: 4
+    });
+    world = engine.world;
+    runner = Runner.create();
+    Runner.run(runner, engine);
+
+    const wOpt = { isStatic: true, restitution: 0.3, friction: 0.5 };
+    floor   = Bodies.rectangle(W/2,  H+25,  W*4, 50,  wOpt);
+    wallL   = Bodies.rectangle(-25,  H/2,   50,  H*4, wOpt);
+    wallR   = Bodies.rectangle(W+25, H/2,   50,  H*4, wOpt);
+    ceiling = Bodies.rectangle(W/2,  -25,   W*4, 50,  wOpt);
+    World.add(world, [floor, wallL, wallR, ceiling]);
+  }
 
   const blocks = [];
 
@@ -57,6 +66,27 @@ if (section) {
     def._el = el;
   });
 
+  // Egyszerű, egymás alá stackelt elrendezés mobil nézethez (fizika nélkül)
+  function layoutMobileStack() {
+    section.style.position = 'relative';
+    section.style.display = 'flex';
+    section.style.flexDirection = 'column';
+    section.style.alignItems = 'center';
+    section.style.justifyContent = 'flex-start';
+    section.style.gap = '14px';
+
+    blockDefs.forEach((def) => {
+      const el = def._el;
+      section.appendChild(el);
+      el.style.position = 'static';
+      el.style.left = 'auto';
+      el.style.top = 'auto';
+      el.style.maxWidth = '90vw';
+      el.style.transform = def.vertical ? 'rotate(180deg)' : 'none';
+      el.style.zIndex = '';
+    });
+  }
+
   async function initPhysics() {
     if (document.fonts?.ready) await document.fonts.ready;
     await new Promise(r => requestAnimationFrame(r));
@@ -64,6 +94,12 @@ if (section) {
 
     W = section.offsetWidth;
     H = section.offsetHeight;
+
+    if (isMobileMode) {
+      document.body.removeChild(measureContainer);
+      layoutMobileStack();
+      return;
+    }
 
     blockDefs.forEach((def, i) => {
       const rect = def._el.getBoundingClientRect();
@@ -127,7 +163,7 @@ if (section) {
   }
 
   function onDown(e) {
-    if (window.innerWidth < 1000) return;
+    if (isMobileMode || window.innerWidth < 1000) return;
     const pos = getPos(e);
     const hit = hitTest(pos.x, pos.y);
     if (!hit) return;
@@ -216,12 +252,14 @@ if (section) {
     drag = null;
   }
 
-  section.addEventListener('mousedown',  onDown, { passive: false });
-  section.addEventListener('mousemove',  onMove, { passive: false });
-  window.addEventListener ('mouseup',    onUp);
-  section.addEventListener('touchstart', onDown, { passive: false });
-  section.addEventListener('touchmove',  onMove, { passive: false });
-  window.addEventListener ('touchend',   onUp);
+  if (!isMobileMode) {
+    section.addEventListener('mousedown',  onDown, { passive: false });
+    section.addEventListener('mousemove',  onMove, { passive: false });
+    window.addEventListener ('mouseup',    onUp);
+    section.addEventListener('touchstart', onDown, { passive: false });
+    section.addEventListener('touchmove',  onMove, { passive: false });
+    window.addEventListener ('touchend',   onUp);
+  }
 
   let floatTime = 0;
 
@@ -309,6 +347,14 @@ if (section) {
   }
 
   window.addEventListener('resize', () => {
+    const nowMobile = window.innerWidth < MOBILE_BREAKPOINT;
+    if (nowMobile !== isMobileMode) {
+      // Áttörtük a mobil/desktop töréspontot - tiszta állapotból induljunk újra
+      location.reload();
+      return;
+    }
+    if (isMobileMode) return;
+
     W = section.offsetWidth;
     H = section.offsetHeight;
     Body.setPosition(floor,   { x: W/2,  y: H+25 });

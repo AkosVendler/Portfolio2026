@@ -33,4 +33,5 @@ export default {
     "contact-title": "Contact",
     "contact-link-title": "Let's work together",
     "social-link-title": "Social media",
+    "available": "Available for freelance",
 };
