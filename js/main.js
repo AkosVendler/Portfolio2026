@@ -146,7 +146,7 @@ function lockScroll() {
   document.body.style.left = "0";
   document.body.style.right = "0";
   document.body.style.overflow = "hidden";
-  document.documentElement.style.overflow = "hidden";
+  document.documentElement.style.overflowY = "hidden";
 }
 
 function unlockScroll() {
@@ -154,7 +154,7 @@ function unlockScroll() {
   document.body.style.top = "";
   document.body.style.left = "";
   document.body.style.right = "";
-  document.documentElement.style.overflow = "";
+  document.documentElement.style.overflowY = "";
   window.scrollTo(0, scrollY);
 }
 
